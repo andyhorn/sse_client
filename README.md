@@ -79,7 +79,7 @@ Stream<SseEvent> connect(
 Add this package to your app's dependencies.
 
 ```bash
-dart/flutter pub add sse_client
+dart/flutter pub add simple_sse
 ```
 
 ## Usage
@@ -89,7 +89,7 @@ dart/flutter pub add sse_client
 You can use the core `SseEventTransformer` to convert a stream of String responses into `SseEvent` models in a custom client implementation:
 
 ```dart
-import 'package:sse_client/sse_core.dart';
+import 'package:simple_sse/sse_core.dart';
 
 final stream = response
     .stream
@@ -104,7 +104,7 @@ final stream = response
 If you don't want to implement your own client logic, use the `SseClient` directly:
 
 ```dart
-import 'package:sse_client/sse_client.dart';
+import 'package:simple_sse/sse_client.dart';
 
 final client = SseClient();
 final events = client.connect(Uri.parse('https://sse.dev/test'));

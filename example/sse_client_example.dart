@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:sse_client/sse_client.dart';
+import 'package:simple_sse/sse_client.dart';
 
 void main() {
   late final StreamSubscription subscription;

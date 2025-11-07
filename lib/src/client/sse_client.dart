@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:sse_client/src/core/core.dart';
+import 'package:simple_sse/src/core/core.dart';
 
 /// The MIME type of the data.
 enum _MimeType {

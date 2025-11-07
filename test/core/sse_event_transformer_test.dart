@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:sse_client/sse_client.dart';
+import 'package:simple_sse/sse_client.dart';
 import 'package:test/test.dart';
 
 void main() {
