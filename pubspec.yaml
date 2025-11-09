@@ -1,7 +1,7 @@
 name: simple_sse
 description: An SSE event transformer and client for Dart applications.
 version: 1.0.0
-repository: https://github.com/andyhorn/simple_sse
+repository: https://github.com/andyhorn/sse_client
 
 environment:
   sdk: ^3.9.2
