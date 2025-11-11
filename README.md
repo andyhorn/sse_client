@@ -4,7 +4,24 @@ An SSE event transformer and client for Dart applications.
 
 Use an event transformer to convert raw String responses into SSE-spec events or use the provided lightweight client to open an SSE event stream without the hassle.
 
-The transformer and client are provided as simple classes to support easier mocking and testing of your application logic.
+## What is SSE?
+
+Server-Sent Events (SSE) is a web protocol for pushing data from a server to a client (it is unidirectional) via HTTP without requiring the client to continuously poll for new data.
+
+Data is transmitted using a series of strings containing a key and a value, separated by a colon. The acceptable keys are:
+
+  * `id`: the id of the event - used for retrying if the connection is lost
+  * `event`: a type or category for the data
+  * `data`: the content of the message - this may contain multiple lines
+  * `retry`: a millisecond value used for retrying the connection if disconnected
+
+Lines starting with a colon are comments and are ignored.
+
+See the [whatwg.org](https://html.spec.whatwg.org/multipage/server-sent-events.html#processField) specification.
+
+## What is Simple SSE?
+
+This package aims to simplify the client-side of SSE by constructing a consumable `SseEvent` model (see below) from the event stream while complying with the specifications.
 
 ## Features
 
