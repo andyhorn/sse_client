@@ -11,7 +11,7 @@ Open an SSE connection and receive a stream of `SseEvent` objects using the `sim
 Add this package to your app's dependencies:
 
 ```bash
-dart pub add simple_sse_http
+dart pub add simple_sse_dio
 ```
 
 Use the `DioSseClient` to open a connection and receive a stream of `SseEvent` objects.

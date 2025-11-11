@@ -1,6 +1,6 @@
 name: simple_sse_dio
 description: An implementation of the `SseClient` interface using the `dio` package.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/andyhorn/sse_client
 resolution: workspace
 
