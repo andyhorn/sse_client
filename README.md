@@ -1,4 +1,4 @@
-# SSE Client
+# Simple SSE
 
 An SSE event transformer and client for Dart applications.
 
