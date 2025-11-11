@@ -1,0 +1,1 @@
+class HttpSseClient implements SseClient {}

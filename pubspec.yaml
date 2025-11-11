@@ -1,16 +1,29 @@
-name: simple_sse
-description: An SSE event transformer and client for Dart applications.
-version: 1.0.1
+name: simple_sse_workspace
+description: A workspace for simple_sse and simple_sse_http packages.
 repository: https://github.com/andyhorn/sse_client
 
-environment:
-  sdk: ^3.9.2
+publish_to: none
 
-dependencies:
-  http: ^1.5.0
-  dio: ^5.9.0
+environment:
+  sdk: ^3.9.0
+
+workspace:
+  - packages/simple_sse
+  - packages/simple_sse_http
+
+packages:
+  - packages/*
+
+command:
+  bootstrap:
+    runPubGetInParallel: true
+
+melos:
+  scripts:
+    analyze: melos exec -- dart analyze .
+    format: melos exec -- dart format .
+    test: melos exec -- dart test .
+    publish:dry: melos exec -- dart pub publish --dry-run
 
 dev_dependencies:
-  lints: ^6.0.0
-  mocktail: ^1.0.4
-  test: ^1.25.6
+  melos: ^7.3.0

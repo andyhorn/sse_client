@@ -21,7 +21,7 @@ class SseEvent {
 
   @override
   String toString() {
-    return 'SseEvent{id: $id, event: $event, data: $data, retry: $retry}';
+    return 'SseEvent(id: $id, event: $event, data: $data, retry: $retry)';
   }
 
   @override

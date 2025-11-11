@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:simple_sse/src/core/core.dart';
+import 'package:simple_sse/src/sse_event.dart';
 
 /// Transforms a stream of SSE lines into a stream of [SseEvent] objects.
 class SseEventTransformer extends StreamTransformerBase<String, SseEvent> {
