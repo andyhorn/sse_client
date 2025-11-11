@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:simple_sse/sse_client.dart';
+import 'package:simple_sse/http.dart';
 import 'package:test/test.dart';
 
 class _MockHttpClient extends Mock implements http.Client {}

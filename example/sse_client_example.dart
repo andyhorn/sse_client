@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:simple_sse/sse_client.dart';
+import 'package:simple_sse/http.dart';
 
 void main() {
   late final StreamSubscription subscription;
@@ -13,6 +13,7 @@ void main() {
   var count = 0;
   subscription = client
       .connect(uri)
+      .take(5)
       .listen(
         (event) {
           count++;
