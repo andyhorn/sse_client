@@ -3,18 +3,18 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:simple_sse/http.dart';
+import 'package:simple_sse_http/simple_sse_http.dart';
 import 'package:test/test.dart';
 
 class _MockHttpClient extends Mock implements http.Client {}
 
 void main() {
   late _MockHttpClient httpClient;
-  late SseClient sseClient;
+  late HttpSseClient sseClient;
 
   setUp(() {
     httpClient = _MockHttpClient();
-    sseClient = SseClient(httpClient);
+    sseClient = HttpSseClient(httpClient);
   });
 
   setUpAll(() {
