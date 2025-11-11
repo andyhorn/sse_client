@@ -10,7 +10,8 @@ environment:
 workspace:
   - packages/simple_sse
   - packages/simple_sse_http
-
+  - packages/simple_sse_dio
+  
 packages:
   - packages/*
 

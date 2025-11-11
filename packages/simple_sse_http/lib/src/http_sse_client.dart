@@ -3,10 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:simple_sse/simple_sse.dart';
 
+/// An implementation of the `SseClient` interface using the `http` package.
 class HttpSseClient implements SseClient {
   final Client _client;
 
   /// Creates a new [HttpSseClient].
+  ///
+  /// [client] The HTTP client to use. Defaults to [Client].
   HttpSseClient([Client? client]) : _client = client ?? Client();
 
   /// Connects to the SSE endpoint and yields SseEvents.

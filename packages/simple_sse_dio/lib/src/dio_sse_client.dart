@@ -1,14 +1,16 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:simple_sse/src/core/sse_client.dart';
-import 'package:simple_sse/src/core/utils.dart';
-import 'package:simple_sse/sse_core.dart';
+import 'package:simple_sse/simple_sse.dart';
 
-class SseClient implements ISseClient {
+/// An implementation of the `SseClient` interface using the `dio` package.
+class DioSseClient implements SseClient {
   final Dio _dio;
 
-  SseClient([Dio? dio]) : _dio = dio ?? Dio();
+  /// Creates a new [DioSseClient].
+  ///
+  /// [dio] The Dio client to use. Defaults to [Dio].
+  DioSseClient([Dio? dio]) : _dio = dio ?? Dio();
 
   @override
   Stream<SseEvent> connect(
@@ -24,10 +26,10 @@ class SseClient implements ISseClient {
         headers: headers,
         responseType: ResponseType.stream,
       ),
-      data: methodSupportsBody(method) ? body : null,
+      data: _methodSupportsBody(method) ? body : null,
     );
 
-    if (!isSuccessStatusCode(response.statusCode ?? 0)) {
+    if (!_isSuccessStatusCode(response.statusCode ?? 0)) {
       final Response(:statusCode, :statusMessage) = response;
 
       throw DioException(
@@ -36,7 +38,7 @@ class SseClient implements ISseClient {
           method: method,
           headers: headers,
           responseType: ResponseType.stream,
-          data: methodSupportsBody(method) ? body : null,
+          data: _methodSupportsBody(method) ? body : null,
         ),
         response: response,
         error: 'Failed to connect: $statusCode ${statusMessage ?? ''}'.trim(),
@@ -49,5 +51,14 @@ class SseClient implements ISseClient {
         .transform(const SseEventTransformer());
 
     yield* stream;
+  }
+
+  bool _methodSupportsBody(String method) {
+    const methods = {'POST', 'PUT', 'PATCH'};
+    return methods.contains(method.toUpperCase());
+  }
+
+  bool _isSuccessStatusCode(int statusCode) {
+    return statusCode >= 200 && statusCode < 300;
   }
 }
