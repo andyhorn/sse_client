@@ -1,39 +1,27 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Simple SSE Dio
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages). 
+An implementation of the [`simple_sse`](https://pub.dev/packages/simple_sse) **SseClient** interface using the [`dio`](https://pub.dev/packages/dio) package.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages). 
--->
+## Features 
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Open an SSE connection and receive a stream of `SseEvent` objects using the `simple_sse` package behind the scenes.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+Add this package to your app's dependencies:
 
-```dart
-const like = 'sample';
+```bash
+dart pub add simple_sse_http
 ```
 
-## Additional information
+Use the `DioSseClient` to open a connection and receive a stream of `SseEvent` objects.
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+final client = DioSseClient();
+final Stream<SseEvent> events = client.connect(Uri.parse('https://sse.dev/test'));
+
+await for (final SseEvent event in events) {
+    // SseEvent(id: 123, event: 'event', data: 'data', retry: 123)
+    print(event.toString()); 
+}
+```
